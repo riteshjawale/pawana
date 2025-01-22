@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup</title>
+  
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
   <style>
 
  /* General Styles */
@@ -19,11 +23,12 @@
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-      gap: 50px;
-      padding: 60px;
+      align-items: center;
+      /* gap: 50px; */
+      /* padding: 60px; */
       background-color: #f9f9f9;
-      width: 92%;
-      height: auto;
+      width: 100%;
+      height: 100vh;
       background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('assets/loginbg.jpg') no-repeat fixed center center/cover;
     }
 
@@ -33,15 +38,15 @@
     }
 
     .signup-image {
-      margin-top: 2rem;
-      width: 80%;
-      height: 100%;
+      /* margin-top: 2rem; */
+      width: 50%;
+      height: 70%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
       color: #999;
-      margin-top: 80px;
+      /* margin-top: 80px; */
       border-radius: 50px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
@@ -53,11 +58,11 @@
     }
 
     .signup-form {
-      margin-top: 3rem;
-      width: 50%;
+      /* margin-top: 3rem; */
+      width: 25%;
       height: 100%;
-      margin-left: 80px;
-      max-width: 400px;
+      /* margin-left: 80px; */
+      /* max-width: 400px; */
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
@@ -73,7 +78,7 @@
     .signup-form .form-group {
       margin-bottom: 15px;
       width: 100%;
-      line-height: 3em;
+      /* line-height: 3em; */
     }
 
     label {
@@ -187,13 +192,20 @@
 
     @media (max-width: 768px) {
       .signup-container {
-        flex-direction: column;
-        padding: 20px;
+        /* flex-direction: column; */
+        width: 90vw;
+        height: 100vh;
+        /* padding: 20px; */
+        border: none;
+        box-shadow: none;
       }
 
-      .signup-image, .signup-form {
+      .signup-image{
+        display: none;
+      }
+      .signup-form {
         width: 100%;
-        margin: 0;
+        /* margin: 0; */
       }
     }
 
@@ -451,7 +463,7 @@
     </div>
   </div>
 
-  <script>
+  <!-- <script>
     const form = document.getElementById("signup-form");
 
     form.addEventListener("submit", async (e) => {
@@ -491,6 +503,89 @@
         window.location.href = "Login.html";
       }
     });
-  </script>
+  </script> -->
+
+<script>
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyA1NpNJhL6250_l0CTo7qoIk5N_idKWwio",
+    authDomain: "pawana-4ff91.firebaseapp.com",
+    projectId: "pawana-4ff91",
+    storageBucket: "pawana-4ff91.firebasestorage.app",
+    messagingSenderId: "687329671670",
+    appId: "1:687329671670:web:111c0794f64c2930b5afd7",
+    measurementId: "G-BVE6S7FGQF"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const dbRef = firebase.database().ref("users");
+
+  // Handle form submission
+  const form = document.getElementById("signup-form");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const emailError = document.getElementById("email-error");
+    const passwordError = document.getElementById("password-error");
+    const confirmPasswordError = document.getElementById("confirmPassword-error");
+
+    // Reset errors
+    emailError.textContent = "";
+    passwordError.textContent = "";
+    confirmPasswordError.textContent = "";
+
+    let hasError = false;
+
+    // Validate email
+    if (!email) {
+      emailError.textContent = "Email is required";
+      hasError = true;
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+      emailError.textContent = "Invalid email format";
+      hasError = true;
+    }
+
+    // Validate password
+    if (!password) {
+      passwordError.textContent = "Password is required";
+      hasError = true;
+    } else if (password.length < 6) {
+      passwordError.textContent = "Password must be at least 6 characters long";
+      hasError = true;
+    }
+
+    // Validate confirm password
+    if (password !== confirmPassword) {
+      confirmPasswordError.textContent = "Passwords do not match";
+      hasError = true;
+    }
+
+    // Save to Firebase if no errors
+    if (!hasError) {
+      const userData = {
+        email,
+        password, // It's not secure to store plain-text passwords; use Firebase Authentication for proper handling
+        createdAt: new Date().toISOString()
+      };
+
+      try {
+        await dbRef.push(userData);
+        alert("Signup successful!");
+        form.reset();
+        window.location.href = "Login.html";
+      } catch (error) {
+        alert("Error saving data to Firebase: " + error.message);
+      }
+    }
+  });
+</script>
+
+
+
 </body>
 </html>
