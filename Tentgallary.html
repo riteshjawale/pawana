@@ -71,7 +71,7 @@
       }
 
       .gallery-row-2 {
-        grid-column: span 4; /* Spans the width of 4 columns */
+        grid-column: span 2 ; /* Spans the width of 4 columns */
         display: grid;
         grid-template-columns: repeat(3, 1fr); /* Divides into 3 equal sections */
         gap: 1rem;
@@ -98,13 +98,12 @@
         transform: scale(1.05);
       }
       .gallery-container1 {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 50px;
-  margin: 20px auto;
-  flex-wrap: wrap;
-  margin-right: 1rem;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 50px;
+        margin: 20px auto;
+        flex-wrap: wrap;
+        display: flex;
 }
 
 /* Image Card Styling */
@@ -321,7 +320,35 @@
         }
       }
 
-       /* General Navbar Styles */
+       
+
+    .main-div-gal{
+        margin-top: 7rem;
+    }
+
+    @media (max-width: 768px) {
+    /* ... existing media query rules ... */
+
+    .gallery-layout {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for images */
+    }
+
+    .vertical-image {
+        /* ... existing rules ... */
+        grid-column: 1; /* Align vertically */ 
+    }
+
+    /* Adjust for smaller screens */
+    .vertical-image img {
+        height: 250px; /* Adjust height for smaller screens */
+    }
+
+    .gallery-row-2 {
+        grid-template-columns: 1fr 1fr; /* Two columns */
+    }
+}
+
+/* General Navbar Styles */
 .nav-navbar {
         display: flex;
         justify-content: space-between;
@@ -336,6 +363,7 @@
         right: 0;
         left: 0;
         z-index: 1000;
+        margin-bottom: 80px;
       }
 
       #nav-logo {
@@ -360,6 +388,7 @@
         color: #fff;
         text-decoration: none;
         font-size: 1rem;
+        cursor: pointer;
         transition: color 0.3s;
       }
 
@@ -453,9 +482,7 @@
         .nav-navbar{
           display: flex;
           flex-direction: row;
-          justify-content: center;
-          gap: 62px;
-          /* margin-right: 100px; */
+          justify-content: space-between;
         }
 
         .nav-desktop-menu {
@@ -465,17 +492,33 @@
         .nav-mobile-menu-icon {
           display: block;
         }
+
+        .nav-mobile-gallery-dropdown{
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nav-mobile-dropdown-menu{
+          display: flex;
+          flex-direction: column;
+          margin: auto;
+          font-size: 15px;
+          /* text-decoration: underline; */
+        }
+
       }
 
 
       /* Mobile menu: Show when active */
 .nav-mobile-menu.active {
   display: flex;
+  flex-direction: column;
 }
 
 /* Mobile dropdown: Show when open */
 .nav-mobile-dropdown-menu.open {
   display: flex;
+  flex-direction: column;
 }
 
 
@@ -498,19 +541,6 @@
   z-index: 100;
   flex-direction: column;
   width: 200px;
-
-        /* position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: black;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        width: 200px;
-        z-index: 100;
-        max-width: 100%;
-        box-sizing: border-box;
-        color: white; */
       }
 
       .nav-dropdown-item {
@@ -522,7 +552,7 @@
       }
 
       .nav-dropdown-item:hover {
-        background-color: #000000;
+        background-color: #555;
       }
 
       .nav-gallery-dropdown:hover .nav-dropdown-menu {
@@ -567,39 +597,18 @@
       }
 
       @media (max-width: 768px) {
-        
         .nav-mobile-dropdown-menu {
-	display: flex;
-	flex-direction: column;
-	margin: auto;
-}
+          display: flex;
+        }
       }
 
-    .main-div-gal{
-        margin-top: 7rem;
-    }
 
-    @media (max-width: 768px) {
-    /* ... existing media query rules ... */
-
-    .gallery-layout {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for images */
-    }
-
-    .vertical-image {
-        /* ... existing rules ... */
-        grid-column: 1; /* Align vertically */ 
-    }
-
-    /* Adjust for smaller screens */
-    .vertical-image img {
-        height: 250px; /* Adjust height for smaller screens */
-    }
-
-    .gallery-row-2 {
-        grid-template-columns: 1fr 1fr; /* Two columns */
-    }
+      .galleryimg img, .image-card1 img {
+  max-width: 100%;
+  height: auto;
 }
+
+
 
     </style>
   </head>
@@ -704,33 +713,33 @@
         <div class="gallery-layout">
           <!-- First row (4 images) -->
           <div class="galleryimg">
-            <img src="../Assets/gg3.jpg" alt="Gallery Item 1" />
+            <img src="assets/gg3.jpg" alt="Gallery Item 1" />
           </div>
           <div class="galleryimg">
-            <img src="../Assets/g2.jpeg" alt="Gallery Item 2" />
+            <img src="assets/g2.jpeg" alt="Gallery Item 2" />
           </div>
           <div class="galleryimg">
-            <img src="../Assets/glam.jpg" alt="Gallery Item 3" />
+            <img src="assets/glam.jpg" alt="Gallery Item 3" />
           </div>
           <div class="galleryimg">
-            <img src="../Assets/gg4.jpg" alt="Gallery Item 4" />
+            <img src="assets/gg4.jpg" alt="Gallery Item 4" />
           </div>
 
           <!-- Vertical Image -->
           <div class="vertical-image">
-            <img src="../Assets/dome (4).jpg" alt="Vertical Image" />
+            <img src="assets/dome (4).jpg" alt="Vertical Image" />
           </div>
 
           <!-- Second row (3 images spanning the width of 4 images) -->
           <div class="gallery-row-2">
             <div class="galleryimg">
-              <img src="../Assets/g6.jpeg" alt="Gallery Item 5" />
+              <img src="assets/g6.jpeg" alt="Gallery Item 5" />
             </div>
             <div class="galleryimg">
-              <img src="../Assets/glam.jpg" alt="Gallery Item 6" />
+              <img src="assets/glam.jpg" alt="Gallery Item 6" />
             </div>
             <div class="galleryimg">
-              <img src="../Assets/g7.jpeg" alt="Gallery Item 7" />
+              <img src="assets/g7.jpeg" alt="Gallery Item 7" />
             </div>
           </div>
         </div>
@@ -739,22 +748,22 @@
     <div class="gallery-container1">
         <!-- Image Cards -->
         <div id="image-1" class="image-card1">
-          <img src="../Assets/gg3.jpg" alt="Gallery 1" />
+          <img src="assets/gg3.jpg" alt="Gallery 1" />
         </div>
         <div id="image-2" class="image-card1">
-          <img src="../Assets/g2.jpeg" alt="Gallery 2" />
+          <img src="assets/g2.jpeg" alt="Gallery 2" />
         </div>
         <div id="image-3" class="image-card1">
-          <img src="../Assets/glam.jpg" alt="Gallery 3" />
+          <img src="assets/glam.jpg" alt="Gallery 3" />
         </div>
         <div id="image-4" class="image-card1">
-          <img src="../Assets/gg4.jpg" alt="Gallery 4" />
+          <img src="assets/gg4.jpg" alt="Gallery 4" />
         </div>
         <div id="image-5" class="image-card1">
-          <img src="../Assets/dome (4).jpg" alt="Gallery 5" />
+          <img src="assets/dome (4).jpg" alt="Gallery 5" />
         </div>
         <div id="image-6" class="image-card1">
-          <img src="../Assets/g6.jpeg" alt="Gallery 6" />
+          <img src="assets/g6.jpeg" alt="Gallery 6" />
         </div>
     </div>
 
@@ -762,7 +771,7 @@
       <div class="footr-footer-container">
         <!-- Logo and Mission -->
         <div class="footr-footer-section footr-logo-mission">
-          <img src="Assets/logo.png" alt="Logo" class="footr-footer-logo" />
+          <img src="assets/logo.png" alt="Logo" class="footr-footer-logo" />
           <p>
             Our mission is to inspire people to connect with nature and experience the joys of camping. 
             We aim to provide a comprehensive camping experience by offering a wide range of camping gear 
@@ -800,10 +809,10 @@
           </div>
           <div class="footr-social-icons">
             <a href="https://www.facebook.com/etherealhillsglamping">
-              <img src="Assets/facebook.png" alt="Facebook" />
+              <img src="assets/facebook.png" alt="Facebook" />
             </a>
             <a href="https://www.instagram.com/etherealhillsglamping/profilecard/?igsh=MWJrMzRzNThpbnRobw==">
-              <img src="Assets/insta.png" alt="Instagram" />
+              <img src="assets/insta.png" alt="Instagram" />
             </a>
           </div>
         </div>
