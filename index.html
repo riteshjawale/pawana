@@ -924,14 +924,15 @@
 
 /* Facilities Section */
 .facility-section {
+  padding: 5rem;
   margin-bottom: 5rem;
 }
 
 .facility-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding-left: 70px;
+  gap: 5rem;
+  /* padding-left: 70px; */
 }
 
 .facility-card {
@@ -941,8 +942,9 @@
   overflow: hidden;
   text-align: center;
   width: 100%;
-  max-width: 350px;
+  /* max-width: 350px; */
   height: 500px;
+  margin: auto;
 }
 
 .facility-image {
@@ -966,20 +968,7 @@
   color: #666;
 }
 
-/* Optional: To make sure that the grid is responsive */
-@media (max-width: 1024px) {
-  .facility-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding-left: 20px;
-  }
-}
 
-@media (max-width: 768px) {
-  .facility-grid {
-    grid-template-columns: 1fr;
-    padding-left: 10px;
-  }
-}
 
 /* Schedule Section */
 .schedule-section {
@@ -1089,11 +1078,11 @@
 @media (max-width: 1024px) {
   .facility-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    padding-left: 20px;
+    
   }
 
   .facility-card {
-    max-width: 90%;
+    max-width: 100%;
   }
 
   .counter-container {
@@ -1110,11 +1099,12 @@
 @media (max-width: 768px) {
   .facility-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    padding-left: 10px;
+    /* padding-left: 10px; */
   }
 
   .facility-card {
     max-width: 100%;
+    margin: auto;
   }
 
   .counter-container {
@@ -1127,9 +1117,10 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 266px;
+    width: 220px;
+    margin: auto;
     text-align: center;
-    margin-left: -42px;
+    /* margin-left: -42px; */
   }
 }
 
@@ -1171,10 +1162,10 @@
 .slideshow-container {
   position: relative;
   width: 100%;
-  max-width: 350px;
+  /* max-width: 350px; */
   height: 300px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 10px 0px;
 }
 
 .slideshow-slide {
@@ -1280,6 +1271,7 @@
         color: #fff;
         text-decoration: none;
         font-size: 1rem;
+        cursor: pointer;
         transition: color 0.3s;
       }
 
@@ -1383,17 +1375,33 @@
         .nav-mobile-menu-icon {
           display: block;
         }
+
+        .nav-mobile-gallery-dropdown{
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nav-mobile-dropdown-menu{
+          display: flex;
+          flex-direction: column;
+          margin: auto;
+          font-size: 15px;
+          /* text-decoration: underline; */
+        }
+
       }
 
 
       /* Mobile menu: Show when active */
 .nav-mobile-menu.active {
   display: flex;
+  flex-direction: column;
 }
 
 /* Mobile dropdown: Show when open */
 .nav-mobile-dropdown-menu.open {
   display: flex;
+  flex-direction: column;
 }
 
 
@@ -1416,19 +1424,6 @@
   z-index: 100;
   flex-direction: column;
   width: 200px;
-
-        /* position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: black;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        width: 200px;
-        z-index: 100;
-        max-width: 100%;
-        box-sizing: border-box;
-        color: white; */
       }
 
       .nav-dropdown-item {
@@ -1440,7 +1435,7 @@
       }
 
       .nav-dropdown-item:hover {
-        background-color: #000000;
+        background-color: #555;
       }
 
       .nav-gallery-dropdown:hover .nav-dropdown-menu {
@@ -1491,6 +1486,8 @@
       }
 
 
+
+
       
 
   </style>
@@ -1508,18 +1505,16 @@
           <a href="Login.html" class="nav-book-now-link">Book Now</a>
         </button>
       </div>
-
       <div class="nav-desktop-menu">
         <a href="index.html" class="nav-desktop-menu-list-item">Home</a>
-        <a href="Contact.html" class="nav-desktop-menu-list-item"
-          >Contact Us</a
-        >
+        <a href="Contact.html" class="nav-desktop-menu-list-item">Contact Us</a>
         <a href="Aboutus.html" class="nav-desktop-menu-list-item">About Us</a>
 
+        <!-- Desktop Dropdown -->
         <div class="nav-gallery-dropdown">
-          <a href="" class="nav-desktop-menu-list-item">
+          <span class="nav-desktop-menu-list-item nav-dropdown-toggle">
             Gallery <span class="nav-down-arrow">▼</span>
-          </a>
+          </span>
           <div class="nav-dropdown-menu">
             <a href="Tentgallary.html" class="nav-dropdown-item">Tent Gallery</a>
             <a href="glam.html" class="nav-dropdown-item">Glam Gallery</a>
@@ -1528,17 +1523,20 @@
       </div>
     </div>
 
+    <!-- Mobile Menu Icon -->
     <div class="nav-mobile-menu-icon">☰</div>
 
+    <!-- Mobile Menu -->
     <div class="nav-mobile-menu">
       <a href="index.html" class="nav-mobile-menu-list-item">Home</a>
       <a href="Contact.html" class="nav-mobile-menu-list-item">Contact Us</a>
-      <a href="Aboutus.html" class="nav-mobile-menu-list-item">About</a>
+      <a href="Aboutus.html" class="nav-mobile-menu-list-item">About Us</a>
 
+      <!-- Mobile Dropdown -->
       <div class="nav-mobile-gallery-dropdown">
-        <a href="" class="nav-mobile-menu-list-item">
+        <span class="nav-mobile-menu-list-item nav-dropdown-toggle">
           Gallery <span class="nav-down-arrow">▼</span>
-        </a>
+        </span>
         <div class="nav-mobile-dropdown-menu">
           <a href="Tentgallary.html" class="nav-mobile-dropdown-item">Tent Gallery</a>
           <a href="glam.html" class="nav-mobile-dropdown-item">Glam Gallery</a>
@@ -1566,6 +1564,7 @@
   dropdowns.forEach((dropdown) => {
     const dropdownToggle = dropdown.querySelector(".nav-mobile-menu-list-item");
     const dropdownMenu = dropdown.querySelector(".nav-mobile-dropdown-menu");
+    
 
     dropdownToggle.addEventListener("click", (event) => {
       event.preventDefault(); // Prevent default link behavior
