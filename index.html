@@ -34,6 +34,7 @@
       text-align: center;
       line-height: 1.2rem;
       /* transition: background-image 0s ease-in-out; */
+      transition: background-image 1s ease-in-out;
       position: relative;
       clip-path: ellipse(100% 80% at 50% 20%);
       margin-top: 110px;
@@ -78,14 +79,15 @@
       border-radius: 50%;
       background-color: rgb(255, 255, 255);
       cursor: pointer;
-      transition: background-color 0.3s;
+      /* transition: background-color 0.3s; */
     }
 
     .dot.active {
-      background-color: blue;
+      background-color: rgb(71, 68, 68);
       width: 10px;
       height: 10px;
       border-radius: 50%;
+      transform: scale(1.5);
     }
 
     /* Footer Styles */
@@ -459,15 +461,7 @@
     font-size: 1.5rem;
   }
 
-  .dots-container {
-    gap: 6px;
-  }
 
-  .dot {
-    width: 8px;
-    height: 8px;
-  }
-  
  
 
     /* Feature container */
@@ -547,26 +541,32 @@
     bottom: 20px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 0px;
     z-index: 2;
   }
 
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     background-color: #fff;
     border-radius: 50%;
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 1;
     transition: opacity 0.3s;
+    box-shadow: 0.2px 0.2px rgb(121, 121, 121);
   }
   .dot.active {
     opacity: 1;
-  }
+    transform: scale(1.2);
+      background-color: rgb(105, 100, 100);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
   .hero-section {
     width: 100%;
-    height: 100%; /* Full viewport height */
-    background-size: 100% 100%; /* Stretch image to fill both width and height */
+    height: 60vh; /* Full viewport height */
+    background-size: cover; /* Stretch image to fill both width and height */
     background-position: center; /* Keep the focus on the center of the image */
     background-repeat: no-repeat; /* Prevent repeating the image */
     margin-top: 110px;
@@ -866,12 +866,16 @@
   z-index: 500;
 }
 
+.section-heading{
+    text-align: center;
+  }
+
 .app2 .disabled-button{
   background-color: #c5bfbb;
 }
 
 /* Responsive Design */
-@media (max-width: 900px) {
+@media (max-width: 728px) {
   .app2 .card {
     width: 45%;
     height: 400px;
@@ -886,13 +890,31 @@
     font-size: 14px;
     padding: 8px 15px;
   }
-}
-
-@media (max-width: 600px) {
   .app2 .card {
     width: 90%;
-    height: auto;
+    height: 70vh;
     margin: 10px 0;
+  }
+
+  .hero-content h1 {
+	font-size: 2.5rem;
+  margin-top: 1rem;
+}
+}
+
+@media (max-width: 480px) {
+  .app2 .card {
+    width: 90%;
+    height: 55vh;
+    margin: 10px 0;
+  }
+
+  .section-heading{
+    text-align: center;
+  }
+  
+  .app2 .card-container{
+    gap: 1.5rem;
   }
 
   .app2 .add-to-cart {
@@ -904,6 +926,15 @@
     font-size: 12px;
     padding: 8px 10px;
   }
+  .app2 .card-image-container {
+	width: 100%;
+	height: 47%;
+	overflow: hidden;
+}
+.hero-content h1 {
+	font-size: 2.5rem;
+  margin-top: 1rem;
+}
 }
 
 /* General Facility Page Styles */
@@ -914,13 +945,7 @@
   /* padding: 2rem; */
 }
 
-.section-heading {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  color: #004d40;
-}
+
 
 /* Facilities Section */
 .facility-section {
@@ -1002,7 +1027,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5rem;
+  gap: 0.5rem;
 }
 
 .counter-card {
@@ -1013,7 +1038,7 @@
 }
 
 .counter-value {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #004d40;
 }
 
@@ -1030,8 +1055,10 @@
 }
 
 .section-heading {
+  width: 90%;
   font-size: 2.5rem;
   margin-bottom: 2rem;
+  margin-top: 2rem;
   color: #333;
   padding: 2rem;
 }
@@ -1097,6 +1124,10 @@
 }
 
 @media (max-width: 768px) {
+  .facility-section {
+	padding: 3rem;
+	margin-bottom: 5rem;
+}
   .facility-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     /* padding-left: 10px; */
@@ -1117,16 +1148,24 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 220px;
+    width: 15rem;
     margin: auto;
     text-align: center;
     /* margin-left: -42px; */
   }
+
+  .counter-card {
+  padding: 0rem;
+  text-align: center;
+  max-width: 200px;
+  border: none;
+}
 }
 
 @media (max-width: 480px) {
   .section-heading {
     font-size: 1.5rem;
+    padding: 0;
   }
 
   .facility-title {
@@ -1138,7 +1177,7 @@
   }
 
   .counter-value {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .counter-label {
@@ -1156,6 +1195,40 @@
   .review-stars {
     font-size: 1rem;
   }
+  .review-box {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    text-align: center;
+    /* margin-left: -42px; */
+  }
+
+  .facility-section {
+	padding: 1rem;
+}
+.facility-grid {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin-bottom: 1rem;
+  gap: 3rem;
+    /* padding-left: 10px; */
+  }
+
+  .facility-card {
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .counter-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
+
+  
 }
 
 /* Slideshow Styles */
@@ -1165,7 +1238,7 @@
   /* max-width: 350px; */
   height: 300px;
   overflow: hidden;
-  border-radius: 10px 0px;
+  border-radius: 10px 0px 0px 0px;
 }
 
 .slideshow-slide {
@@ -1593,27 +1666,34 @@
         </h1>
       </div>
       <div class="dots-container">
-        <div class="dot active" onclick="handleDotClick(0)"></div>
-        <div class="dot" onclick="handleDotClick(1)"></div>
-        <div class="dot" onclick="handleDotClick(2)"></div>
+        <div class="dot active" onclick="handleDotClick(0)" aria-label="Slide 1" title="Slide 1"></div>
+        <div class="dot" onclick="handleDotClick(1)" aria-label="Slide 2" title="Slide 2"></div>
+        <div class="dot" onclick="handleDotClick(2)" aria-label="Slide 3" title="Slide 3"></div>
       </div>
     </div>
   
     <script>
-      const images = ["assets/book2.jpg", "assets/pawana2.jpg", "assets/pawana3.jpg"];
+      const images = ["assets/pawana1.jpg", "assets/pawana2.jpg", "assets/pac2.jpg"];
       let currentIndex = 2;
   
-      function setBackgroundImage() {
-        document.querySelector(".hero-section").style.backgroundImage = `url(${images[currentIndex]})`;
-        const dots = document.querySelectorAll(".dot");
-        dots.forEach((dot, index) => {
-          if (index === currentIndex) {
-            dot.classList.add("active");
-          } else {
-            dot.classList.remove("active");
-          }
+      function preloadImages() {
+        images.forEach((image) => {
+          const img = new Image();
+          img.src = image;
         });
       }
+  
+      function setBackgroundImage() {
+        const heroSection = document.querySelector(".hero-section");
+        heroSection.style.backgroundImage = `url(${images[currentIndex]})`;
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentIndex);
+        });
+      }
+  
+      preloadImages();
+      setBackgroundImage();
   
       setInterval(() => {
         currentIndex = (currentIndex + 1) % images.length;
@@ -1625,6 +1705,8 @@
         setBackgroundImage();
       }
     </script>
+  </div>
+  
   
     <!-- Welcome Page Section -->
     <div class="welcome-page-container">
@@ -1871,8 +1953,8 @@
     </section>
   
     <section class="reviews-section">
-      <h1 class="section-heading">What Our Guests Say</h1>
       <div class="reviews-container">
+        <h1 class="section-heading">What Our Guests Say</h1>
           <!-- Review 1 -->
           <div class="review-box">
               <h3 class="review-name">Incredible Experience!</h3>
